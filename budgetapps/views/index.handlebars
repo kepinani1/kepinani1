@@ -1,0 +1,52 @@
+<h1>Budget App</h1>
+
+<h2>Populate your Expense and Income Line Items</h2>
+
+<ul>
+  {{#each budget}}
+    {{#unless expense}}
+      {{> budget/budget-block expense=true}}
+    {{/unless}}
+  {{/each}}
+</ul>
+
+<h2>Expense Line Items</h2>
+
+<ul>
+  {{#each budget}}
+    {{#if expense}}
+      {{> budget/budget-block expense=true}}
+    {{/if}}
+  {{/each}}
+</ul>
+
+<h2>Income Line Items</h2>
+<ul>
+  {{#each budget}}
+    {{#if income}}
+      {{> budget/budget-block expense=false}}
+    {{/if}}
+  {{/each}}
+</ul>
+
+<h2>Add a Line Item</h2>
+<form class="create-form">
+
+  <div class="form-group">
+    <label for="ca">Line Item:</label>
+    <input type="text" id="ca" name="name">
+  </div>
+
+  <div class="form-group">
+    <label for="amount">Amount:</label>
+    <input type="text" id="amount" name="amount">
+  </div>
+
+  <div class="form-group">
+    <label for="expense">Type</label><br>
+    <input type="radio" name="expense" value="0" checked> Income<br>
+    <input type="radio" name="expense" value="1"> Expense
+  </div>
+
+  <button type="submit" id="submit">Submit</button>
+</form>
